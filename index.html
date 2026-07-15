@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foxxy Tools - All in One Media Tools</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- ===== HEADER ===== -->
+        <header class="main-header">
+            <div class="logo">
+                <i class="fas fa-fox"></i>
+                <span>foxxy<span class="logo-light">.tools</span></span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="active"><i class="fas fa-home"></i> Beranda</a>
+                <a href="#compressor"><i class="fas fa-compress-alt"></i> Kompresor</a>
+                <a href="#enhancer"><i class="fas fa-magic"></i> Enhancer</a>
+                <a href="#tiktok-stats"><i class="fas fa-chart-bar"></i> Statistik</a>
+                <a href="#downloader"><i class="fas fa-download"></i> Unduh</a>
+                <a href="#interpolation"><i class="fas fa-film"></i> Interpolasi</a>
+            </nav>
+            <div class="license-badge">
+                <i class="fas fa-crown"></i> &copy; foxxy
+            </div>
+        </header>
+
+        <!-- ===== TOOLS GRID ===== -->
+        <main class="tools-grid">
+
+            <!-- 1. UPLOAD METHOD V1/V2 -->
+            <section class="tool-card" id="upload-method">
+                <div class="card-header">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload Method <small>V1 / V2</small></h3>
+                </div>
+                <div class="card-body">
+                    <p>Unggah video dengan resolusi/FPS terbaik untuk TikTok.</p>
+                    <div class="badge-group">
+                        <span class="badge active"><i class="fas fa-check-circle"></i> v1 (HQ)</span>
+                        <span class="badge"><i class="fas fa-circle"></i> v2 (Pro)</span>
+                    </div>
+                    <div class="version-tag">
+                        <span class="active">1080p · 60fps</span>
+                        <span>H.264 VBR 16Mbps</span>
+                    </div>
+                    <div class="drop-zone">
+                        <i class="fas fa-video"></i>
+                        <span>Drag &amp; drop atau klik</span>
+                        <input type="file" accept="video/*" />
+                    </div>
+                    <button class="btn-primary"><i class="fas fa-upload"></i> Proses Upload</button>
+                </div>
+            </section>
+
+            <!-- 2. VIDEO COMPRESSOR -->
+            <section class="tool-card" id="compressor">
+                <div class="card-header">
+                    <i class="fas fa-compress-alt"></i>
+                    <h3>Video Compressor <small>FFmpeg WASM</small></h3>
+                </div>
+                <div class="card-body">
+                    <p>Kompres video tanpa kehilangan kualitas signifikan.</p>
+                    <div class="badge-group">
+                        <span class="badge active">Lambat</span>
+                        <span class="badge">Sedang</span>
+                        <span class="badge">Cepat</span>
+                    </div>
+                    <div class="codec-info">
+                        <span><i class="fas fa-code"></i> H.265 / HEVC</span>
+                        <span>CRF 20 · Preset Maksimum</span>
+                    </div>
+                    <div class="drop-zone">
+                        <i class="fas fa-file-video"></i>
+                        <span>Drag &amp; drop video</span>
+                        <input type="file" accept="video/*" />
+                    </div>
+                    <button class="btn-primary" id="compressBtn"><i class="fas fa-compress"></i> Kompres Sekarang</button>
+                    <div id="compressProgress" class="progress-bar"></div>
+                </div>
+            </section>
+
+            <!-- 3. QUALITY ENHANCER -->
+            <section class="tool-card" id="enhancer">
+                <div class="card-header">
+                    <i class="fas fa-magic"></i>
+                    <h3>Quality Enhancer <small>Media Upscaler</small></h3>
+                </div>
+                <div class="card-body">
+                    <p>Tingkatkan resolusi foto/video ke 1080p, 2K, atau 4K.</p>
+                    <div class="badge-group">
+                        <span class="badge">1080p</span>
+                        <span class="badge active">2K</span>
+                        <span class="badge">4K</span>
+                    </div>
+                    <div class="drop-zone">
+                        <i class="fas fa-image"></i>
+                        <span>Drag &amp; drop media</span>
+                        <input type="file" accept="image/*,video/*" />
+                    </div>
+                    <button class="btn-primary" id="enhanceBtn"><i class="fas fa-wand-magic-sparkles"></i> Upscale</button>
+                </div>
+            </section>
+
+            <!-- 4. TIKTOK STATISTIC -->
+            <section class="tool-card" id="tiktok-stats">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>TikTok Statistics <small>Metadata &amp; Analisis</small></h3>
+                </div>
+                <div class="card-body">
+                    <p>Lihat metadata &amp; statistik video TikTok.</p>
+                    <div class="input-group">
+                        <input type="url" id="statsUrl" placeholder="https://www.tiktok.com/@user/video/..." />
+                        <button class="btn-primary" id="statsBtn"><i class="fas fa-search"></i> Ambil</button>
+                    </div>
+                    <div id="statsResult" class="result-box"></div>
+                </div>
+            </section>
+
+            <!-- 5. TIKTOK DOWNLOADER -->
+            <section class="tool-card" id="downloader">
+                <div class="card-header">
+                    <i class="fas fa-download"></i>
+                    <h3>TikTok Downloader <small>Tanpa Watermark</small></h3>
+                </div>
+                <div class="card-body">
+                    <p>Unduh video TikTok resolusi asli tanpa watermark.</p>
+                    <div class="input-group">
+                        <input type="url" id="dlUrl" placeholder="https://www.tiktok.com/@user/video/..." />
+                        <button class="btn-primary" id="dlBtn"><i class="fas fa-arrow-down"></i> Unduh</button>
+                    </div>
+                    <div id="dlResult" class="result-box"></div>
+                </div>
+            </section>
+
+            <!-- 6. VIDEO INTERPOLATION -->
+            <section class="tool-card" id="interpolation">
+                <div class="card-header">
+                    <i class="fas fa-film"></i>
+                    <h3>Video Interpolation <small>FPS Upscaler</small></h3>
+                </div>
+                <div class="card-body">
+                    <p>Tingkatkan FPS video tanpa mengurangi resolusi.</p>
+                    <div class="badge-group">
+                        <span class="badge">30 → 60</span>
+                        <span class="badge active">60 → 120</span>
+                    </div>
+                    <div class="drop-zone">
+                        <i class="fas fa-video"></i>
+                        <span>Drag &amp; drop video</span>
+                        <input type="file" accept="video/*" />
+                    </div>
+                    <button class="btn-primary" id="interpolateBtn"><i class="fas fa-forward"></i> Interpolasi</button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <span><i class="fas fa-crown"></i> Lisensi Resmi: foxxy</span>
+                <span>|</span>
+                <span><i class="fas fa-code"></i> Dibangun dengan ❤️</span>
+                <span>|</span>
+                <span><i class="fas fa-shield-alt"></i> API Resmi + Cadangan</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.6/dist/umd/ffmpeg.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/compressor.js"></script>
+    <script src="js/enhancer.js"></script>
+    <script src="js/tiktok.js"></script>
+    <script src="js/downloader.js"></script>
+    <script src="js/interpolation.js"></script>
+</body>
+</html>
